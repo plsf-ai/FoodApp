@@ -2,6 +2,9 @@ import 'package:FoodAp/api_service.dart';
 import 'package:FoodAp/pages/signup_page.dart';
 import 'package:FoodAp/utilis/ProgressHUD.dart';
 import 'package:flutter/material.dart';
+import 'home_page.dart';
+
+import 'home_page.dart';
 
 class Loginpage extends StatefulWidget {
   @override
@@ -138,7 +141,11 @@ class _LoginpageState extends State<Loginpage> {
                               apiService
                                   .loginCustomer(username, password)
                                   .then((ret) {
-                                if (ret != null) {
+                                setState(() {
+                                  isApiCallProcess = false;
+                                });
+
+                                if (ret.data != null) {
                                   print(ret.data.token);
                                   print(ret.data.toJson());
                                   FormHelper.showMessage(
@@ -146,15 +153,24 @@ class _LoginpageState extends State<Loginpage> {
                                     "Food CITY APP ",
                                     "Login Sucessful",
                                     "OK",
-                                    () {},
+                                    () {
+                                      Navigator.pushAndRemoveUntil(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) => HomePage(),
+                                        ),
+                                        ModalRoute.withName("/Home"),
+                                      );
+                                    },
                                   );
                                 } else {
                                   FormHelper.showMessage(
                                       context,
                                       "Food City App",
                                       "Invalid Login",
-                                      "Ok",
-                                      () {});
+                                      "Ok", () {
+                                    Navigator.of(context).pop();
+                                  });
                                 }
                               });
                             }

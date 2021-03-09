@@ -6,4 +6,9 @@ class Config {
   static String customerURL = "customers";
   static String tokenURL =
       "https://vege-shop-67fb75.ingress-daribow.easywp.com/wp-json/jwt-auth/v1/token";
+  static String categoriesURL = "products/categories";
+
+  static String productsURL = "products";
+  static String todayOffersTagId = "18";
+  static String topSellingProductsTagId = "17";
 }

@@ -1,7 +1,8 @@
+import 'package:FoodAp/pages/home_page.dart';
 import 'package:flutter/material.dart';
 
-import 'pages/signup_page.dart';
-import './pages/login_page.dart';
+//import 'pages/signup_page.dart';
+//import './pages/login_page.dart';
 
 void main() {
   runApp(MyApp());
@@ -33,7 +34,7 @@ class MyApp extends StatelessWidget {
                 fontWeight: FontWeight.w400,
                 color: Colors.blueAccent,
               ))),
-      home: Loginpage(),
+      home: Homepage(),
     );
   }
 }
